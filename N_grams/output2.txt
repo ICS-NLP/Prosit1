@@ -1,0 +1,75 @@
+================================================================================
+TESTING N-GRAM LANGUAGE MODEL
+================================================================================
+
+Loading model from: models/akan_best.pkl
+Estimated discount: 0.8089 (n₁=251015, n₂=29656)
+Kneser-Ney fitted with discount d = 0.8089
+Model loaded from models/akan_best.pkl
+Model loaded successfully!
+  Order: 3-gram
+  Smoothing: kneser_ney
+  Vocabulary size: 11,260
+
+================================================================================
+GENERATING TEXT FROM PROMPT
+================================================================================
+
+Prompt: 'Nnipa'
+Generating 10 samples...
+Max tokens per sample: 30
+Temperature: 0.8
+
+--------------------------------------------------------------------------------
+
+Sample 1:
+  nnipa baage atwa nso baako hyɛ coat
+
+Sample 2:
+  nnipa bi
+
+Sample 3:
+  nnipa bi gyina lɔɔre kwan so
+
+Sample 4:
+  nnipa pii ebi tetare ho wɔn ho ahyia
+
+Sample 5:
+  nnipa no bi nso si ne nkyɛn a ɔno nso ɔne dan no mu
+
+Sample 6:
+  nnipa no wɔn mu
+
+Sample 7:
+  nnipa reka nefir kura a wɔ no ho
+
+Sample 8:
+  nnipa yi ho ahyia
+
+Sample 9:
+  nnipa no bi nso esi hɔ a anim amoa ɛna fitaa no apagya ne nsa ahwɛ wiem
+
+Sample 10:
+  nnipa no wɔn nyinaa hyɛ ataade tuntum no so
+
+================================================================================
+TOP PREDICTIONS
+================================================================================
+
+Context: ('<s>', 'nnipa')
+Top 10 most likely next words:
+
+   1. no                   0.224928 (22.49%)
+   2. bi                   0.120825 (12.08%)
+   3. yi                   0.111945 (11.19%)
+   4. a                    0.074701 (7.47%)
+   5. bebree               0.061535 (6.15%)
+   6. </s>                 0.021928 (2.19%)
+   7. ne                   0.019107 (1.91%)
+   8. <UNK>                0.017028 (1.70%)
+   9. pii                  0.010084 (1.01%)
+  10. mmiɛnsa              0.010036 (1.00%)
+
+================================================================================
+TESTING COMPLETE
+================================================================================

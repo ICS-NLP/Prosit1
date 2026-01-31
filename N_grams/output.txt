@@ -1,0 +1,343 @@
+================================================================================
+TRAINING N-GRAM LANGUAGE MODEL FOR AKAN
+================================================================================
+
+This script will:
+  1. Load Akan transcriptions from Excel file
+  2. Preprocess and tokenize the text
+  3. Split data into training and test sets
+  4. Train an n-gram language model
+  5. Evaluate the model
+  6. Save the trained model
+  7. Compare different n-gram orders and save the best model
+================================================================================
+
+================================================================================
+STEP 1: LOADING AKAN DATASET
+================================================================================
+================================================================================
+LOADING AKAN DATASET
+================================================================================
+
+Loading dataset from: dataset/Akan.xlsx
+  Found column: 'Transcriptions'
+  Total rows: 18,787
+  Non-empty transcriptions: 18,787
+  Null/empty transcriptions removed: 0
+
+Sample transcriptions (first 3):
+  1. Adwumayɛfoɔ nsia, adwumayɛfoɔ nson a wɔreyɛ adwuma, wɔrebɔ ɛdan so. Mmienu gyina, ɛnam tete hɔ, baak...
+  2. Baabi a yɛbu fangoo, na ɛhɔ ahye ama nwisie ɛfiri baabi reba ɛhyɛn a ɛsisi hɔ nyinaa ayɛ tumm, ɛhyɛn...
+  3. Atoyerɛnkyɛm asi wɔ bea a wɔgu fangoo ɛgu ɛhyɛn mu. Bea A wɔbu fangu gu ɛhyɛn no mu no wɔ kwan ho . ...
+================================================================================
+
+Successfully loaded 18,787 transcriptions
+
+================================================================================
+STEP 2: PREPROCESSING TEXT
+================================================================================
+
+Initializing preprocessor with:
+  Lowercase: False (False preserves Akan word meanings)
+  Minimum word frequency: 2
+  Max vocabulary size: Unlimited
+================================================================================
+STEP 1: BUILDING VOCABULARY FROM TRAINING DATA
+================================================================================
+
+Processing texts to count word frequencies...
+  Processed 1000/18787 texts...
+  Processed 2000/18787 texts...
+  Processed 3000/18787 texts...
+  Processed 4000/18787 texts...
+  Processed 5000/18787 texts...
+  Processed 6000/18787 texts...
+  Processed 7000/18787 texts...
+  Processed 8000/18787 texts...
+  Processed 9000/18787 texts...
+  Processed 10000/18787 texts...
+  Processed 11000/18787 texts...
+  Processed 12000/18787 texts...
+  Processed 13000/18787 texts...
+  Processed 14000/18787 texts...
+  Processed 15000/18787 texts...
+  Processed 16000/18787 texts...
+  Processed 17000/18787 texts...
+  Processed 18000/18787 texts...
+
+Vocabulary building statistics:
+  Total texts processed: 18787
+  Total sentences extracted: 67884
+  Average sentences per text: 3.6
+  (Note: Each transcription may contain multiple sentences)
+  Unique words found: 25117
+  Total word tokens: 646,667
+
+Filtering vocabulary:
+  Minimum frequency threshold: 2
+  Words meeting threshold: 11316
+  Words below threshold: 13801
+
+Final vocabulary size: 11319 words
+  - Regular words: 11316
+  - Special tokens: 3 (<s>, </s>, <UNK>)
+
+Top 20 most frequent words:
+  ✓ a: 31,529 occurrences
+  ✓ no: 29,088 occurrences
+  ✓ bi: 23,722 occurrences
+  ✓ nso: 16,019 occurrences
+  ✓ ne: 15,496 occurrences
+  ✓ mu: 14,675 occurrences
+  ✓ wɔn: 14,492 occurrences
+  ✓ wɔ: 14,381 occurrences
+  ✓ hɔ: 14,126 occurrences
+  ✓ na: 13,370 occurrences
+  ✓ so: 12,721 occurrences
+  ✓ yɛ: 9,159 occurrences
+  ✓ gyina: 6,653 occurrences
+  ✓ ho: 6,551 occurrences
+  ✓ baako: 6,546 occurrences
+  ✓ hyɛ: 5,744 occurrences
+  ✓ si: 5,706 occurrences
+  ✓ Na: 4,838 occurrences
+  ✓ bebree: 3,935 occurrences
+  ✓ akyi: 3,492 occurrences
+================================================================================
+
+================================================================================
+STEP 2: TRANSFORMING TEXTS TO TOKENIZED SENTENCES
+================================================================================
+
+Converting texts to tokenized sentences...
+  Processed 1000/18787 texts...
+  Processed 2000/18787 texts...
+  Processed 3000/18787 texts...
+  Processed 4000/18787 texts...
+  Processed 5000/18787 texts...
+  Processed 6000/18787 texts...
+  Processed 7000/18787 texts...
+  Processed 8000/18787 texts...
+  Processed 9000/18787 texts...
+  Processed 10000/18787 texts...
+  Processed 11000/18787 texts...
+  Processed 12000/18787 texts...
+  Processed 13000/18787 texts...
+  Processed 14000/18787 texts...
+  Processed 15000/18787 texts...
+  Processed 16000/18787 texts...
+  Processed 17000/18787 texts...
+  Processed 18000/18787 texts...
+
+Transformation complete!
+  Total tokenized sentences: 67880
+  Average sentence length: 11.5 tokens
+================================================================================
+
+Preprocessing complete!
+  Total tokenized sentences: 67,880
+
+================================================================================
+STEP 3: SPLITTING DATA
+================================================================================
+
+================================================================================
+STEP 3: SPLITTING DATA INTO TRAINING AND TEST SETS
+================================================================================
+
+Data split complete:
+  Total sentences: 67,880
+  Training sentences: 61,092 (90.0%)
+  Test sentences: 6,788 (10.0%)
+  Random seed: 42 (for reproducibility)
+
+  Note: Sentences > transcriptions because each transcription
+        contains multiple sentences (split on . ! ?)
+================================================================================
+
+================================================================================
+STEP 4: TRAINING 3-GRAM MODEL
+================================================================================
+
+Model configuration:
+  N-gram order: 3
+  Smoothing method: kneser_ney
+  Kneser-Ney discount: 0.75
+
+Training on 61,092 sentences...
+Training 3-gram model...
+Smoothing method: kneser_ney
+Estimated discount: 0.8089 (n₁=251015, n₂=29656)
+Kneser-Ney fitted with discount d = 0.8089
+
+Training complete!
+  Vocabulary size: 11260
+  Total tokens: 643338
+  Total sentences: 61092
+  Unique 3-grams: 311811
+
+================================================================================
+STEP 5: EVALUATING MODEL
+================================================================================
+
+Calculating perplexity on training and test sets...
+
+Perplexity Analysis:
+  Total tokens: 71209
+  Cross-entropy: 6.6558 bits
+  Perplexity: 100.83
+  Sentence perplexities: min=4.08, max=23694.86, mean=207.91
+
+Perplexity Results:
+  Training set: 20.80
+  Test set: 100.83
+  Ratio (test/train): 4.85x
+
+Interpretation:
+  Lower perplexity = better model
+  Test perplexity measures generalization to unseen data
+
+  IMPORTANT: Test perplexity > Training perplexity is NORMAL and EXPECTED!
+  - The model has seen training data, so it predicts it better
+  - Test data is unseen, so the model is less certain
+  - This gap is normal for n-gram models (typically 3-10x)
+  - Your ratio of 4.85x is reasonable for n-gram models
+  - What matters: test perplexity is finite (not infinity)
+
+
+╔══════════════════════════════════════════════════════════════════╗
+║                 N-GRAM MODEL EVALUATION REPORT                    ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Model: 3-gram with kneser_ney
+║  Vocabulary size: 11,260
+╠══════════════════════════════════════════════════════════════════╣
+║  PERPLEXITY METRICS                                              ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Perplexity:     100.83
+║  Cross-entropy:  6.6558 bits
+║
+║  Interpretation:
+║  - The model is as uncertain as choosing from 101 words
+║  - Each word needs ~6.7 bits to encode on average
+╠══════════════════════════════════════════════════════════════════╣
+║  COVERAGE METRICS                                                ║
+╠══════════════════════════════════════════════════════════════════╣
+║  3-gram coverage (unique):   44.1%
+║  3-gram coverage (weighted): 61.0%
+║  OOV (out-of-vocabulary) rate: 0.19%
+║
+║  Unseen 3-grams: 27,352 
+║  out of 48,941 unique
+╚══════════════════════════════════════════════════════════════════╝
+
+
+================================================================================
+COVERAGE ANALYSIS
+================================================================================
+
+Coverage Statistics:
+  Unique test n-grams: 48,941
+  Seen n-grams: 21,589
+  Coverage (unique): 44.1%
+  Coverage (weighted): 61.0%
+  OOV rate: 0.19%
+
+Interpretation:
+  Higher coverage = model has seen more test patterns in training
+  Lower OOV rate = fewer unknown words in test data
+
+================================================================================
+STEP 6: SAVING MODEL
+================================================================================
+Model saved to models/akan_model.pkl
+
+Model saved to: models/akan_model.pkl
+You can load it later using: NGramLanguageModel.load('models/akan_model.pkl')
+
+================================================================================
+STEP 7: TEXT GENERATION SAMPLES
+================================================================================
+
+Generating sample text from the model:
+  1. Mmayewa no hyɛ ntaade fitaa mmiensa ahodoɔ kuro bebree bi ɛwɔ dan no mu
+  2. Na car no nkyɛn
+  3. Ɛna ebinom nso te hɔ na ɔrehwɛ ama si bi anim
+
+Note: Generated text may not be perfect, but should show
+      that the model has learned some patterns from the data.
+
+================================================================================
+STEP 8: COMPARING DIFFERENT N-GRAM ORDERS
+================================================================================
+
+Training models with different n-gram orders...
+This will help identify the best order for this dataset.
+
+
+Training 2-gram model...
+Training 2-gram model...
+Smoothing method: kneser_ney
+Estimated discount: 0.7045 (n₁=84269, n₂=17672)
+Kneser-Ney fitted with discount d = 0.7045
+
+Training complete!
+  Vocabulary size: 11260
+  Total tokens: 643338
+  Total sentences: 61092
+  Unique 2-grams: 129315
+
+Training 3-gram model...
+Training 3-gram model...
+Smoothing method: kneser_ney
+Estimated discount: 0.8089 (n₁=251015, n₂=29656)
+Kneser-Ney fitted with discount d = 0.8089
+
+Training complete!
+  Vocabulary size: 11260
+  Total tokens: 643338
+  Total sentences: 61092
+  Unique 3-grams: 311811
+
+Training 4-gram model...
+Training 4-gram model...
+Smoothing method: kneser_ney
+Estimated discount: 0.8790 (n₁=387606, n₂=26670)
+Kneser-Ney fitted with discount d = 0.8790
+
+Training complete!
+  Vocabulary size: 11260
+  Total tokens: 643338
+  Total sentences: 61092
+  Unique 4-grams: 435523
+
+Evaluating all models on test set...
+
+================================================================================
+COMPARISON RESULTS
+================================================================================
+
+Model           Perplexity      Cross-Entropy   Coverage       
+------------------------------------------------------------
+2-gram          89.11           6.4775          86.8          %
+3-gram          100.83          6.6558          61.0          %
+4-gram          144.19          7.1718          40.0          %
+
+================================================================================
+BEST MODEL: 2-GRAM (Perplexity: 89.11)
+================================================================================
+Model saved to models/akan_best_best_2gram.pkl
+
+Best model saved to: models/akan_best_best_2gram.pkl
+
+================================================================================
+TRAINING COMPLETE!
+================================================================================
+
+Model trained successfully!
+  Order: 3-gram
+  Smoothing: kneser_ney
+  Test Perplexity: 100.83
+  Saved to: models/akan_model.pkl
+
+You can now use this model for text generation or further evaluation.
+================================================================================

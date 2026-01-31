@@ -1,0 +1,22 @@
+# Section B: N-gram Model Dependencies
+
+# Core packages
+numpy>=1.21.0
+pandas>=1.3.0
+
+# NLP packages
+nltk>=3.6.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Utilities
+tqdm>=4.62.0
+requests>=2.26.0
+pandas>=1.3.0
+openpyxl>=3.0.0  # For reading Excel files
+
+# Jupyter (for demo notebook)
+jupyter>=1.0.0
+ipykernel>=6.0.0

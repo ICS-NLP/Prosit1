@@ -1,0 +1,155 @@
+================================================================================
+TESTING N-GRAM LANGUAGE MODEL
+================================================================================
+
+Loading model from: models/akan_best.pkl
+Estimated discount: 0.8089 (n₁=251015, n₂=29656)
+Kneser-Ney fitted with discount d = 0.8089
+Model loaded from models/akan_best.pkl
+Model loaded successfully!
+  Order: 3-gram
+  Smoothing: kneser_ney
+  Vocabulary size: 11,260
+
+================================================================================
+INTERACTIVE MODE
+================================================================================
+
+Enter prompts to generate text (or 'quit' to exit)
+The model will continue from your prompt.
+
+Enter prompt (or 'quit'): Adwumayɛfoɔ
+
+Generating text from prompt: 'Adwumayɛfoɔ'
+--------------------------------------------------------------------------------
+  1. adwumayɛfoɔ wɔnam kura hɔ nnipa bi nso wɔ mmɔfra no bi yɛ nketewa
+  2. adwumayɛfoɔ nfonni baako ɛdan a
+  3. adwumayɛfoɔ bebree adane ayɛ
+  4. adwumayɛfoɔ a ebi nso yɛ fufuw
+  5. adwumayɛfoɔ ɛpono gugu nso no nnipa bi nso gyina hɔ a ɔhyɛ tuntum no te nanim
+
+Enter prompt (or 'quit'): quit
+
+================================================================================
+TESTING COMPLETE
+================================================================================
+
+================================================================================
+PREPROCESSING MODULE - STANDALONE TEST
+================================================================================
+
+This script tests the preprocessing pipeline on Akan dataset.
+It demonstrates: text loading, cleaning, tokenization, vocabulary building.
+
+================================================================================
+LOADING AKAN DATASET
+================================================================================
+
+Loading dataset from: dataset/Akan.xlsx
+  Found column: 'Transcriptions'
+  Total rows: 18,787
+  Non-empty transcriptions: 18,787
+  Null/empty transcriptions removed: 0
+
+Sample transcriptions (first 3):
+  1. Adwumayɛfoɔ nsia, adwumayɛfoɔ nson a wɔreyɛ adwuma, wɔrebɔ ɛdan so. Mmienu gyina, ɛnam tete hɔ, baak...
+  2. Baabi a yɛbu fangoo, na ɛhɔ ahye ama nwisie ɛfiri baabi reba ɛhyɛn a ɛsisi hɔ nyinaa ayɛ tumm, ɛhyɛn...
+  3. Atoyerɛnkyɛm asi wɔ bea a wɔgu fangoo ɛgu ɛhyɛn mu. Bea A wɔbu fangu gu ɛhyɛn no mu no wɔ kwan ho . ...
+
+Using subset of 1000 transcriptions for testing...
+
+Initializing preprocessor...
+
+Fitting vocabulary and transforming texts...
+================================================================================
+STEP 1: BUILDING VOCABULARY FROM TRAINING DATA
+================================================================================
+
+Processing texts to count word frequencies...
+  Processed 1000/1000 texts...
+
+Vocabulary building statistics:
+  Total texts processed: 1000
+  Total sentences extracted: 3576
+  Average sentences per text: 3.6
+  (Note: Each transcription may contain multiple sentences)
+  Unique words found: 3677
+  Total word tokens: 34,537
+
+Filtering vocabulary:
+  Minimum frequency threshold: 2
+  Words meeting threshold: 1605
+  Words below threshold: 2072
+
+Final vocabulary size: 1608 words
+  - Regular words: 1605
+  - Special tokens: 3 (<s>, </s>, <UNK>)
+
+Top 20 most frequent words:
+  ✓ a: 1,880 occurrences
+  ✓ no: 1,744 occurrences
+  ✓ bi: 1,444 occurrences
+  ✓ wɔn: 931 occurrences
+  ✓ wɔ: 865 occurrences
+  ✓ nso: 859 occurrences
+  ✓ mu: 789 occurrences
+  ✓ ne: 693 occurrences
+  ✓ hɔ: 663 occurrences
+  ✓ so: 596 occurrences
+  ✓ Na: 572 occurrences
+  ✓ yɛ: 525 occurrences
+  ✓ na: 517 occurrences
+  ✓ ho: 348 occurrences
+  ✓ gyina: 333 occurrences
+  ✓ baako: 328 occurrences
+  ✓ si: 294 occurrences
+  ✓ n: 291 occurrences
+  ✓ ɛna: 257 occurrences
+  ✓ yi: 250 occurrences
+================================================================================
+
+================================================================================
+STEP 2: TRANSFORMING TEXTS TO TOKENIZED SENTENCES
+================================================================================
+
+Converting texts to tokenized sentences...
+  Processed 1000/1000 texts...
+
+Transformation complete!
+  Total tokenized sentences: 3576
+  Average sentence length: 11.7 tokens
+================================================================================
+
+================================================================================
+SAMPLE TOKENIZED SENTENCES
+================================================================================
+
+Showing first 3 tokenized sentences:
+
+1. Length: 12 tokens
+   Tokens: ['<s>', 'Adwumayɛfoɔ', 'nsia', 'adwumayɛfoɔ', 'nson', 'a', 'wɔreyɛ', 'adwuma', 'wɔrebɔ', 'ɛdan', 'so', '</s>']
+
+2. Length: 18 tokens
+   Tokens: ['<s>', 'Mmienu', 'gyina', 'ɛnam', 'tete', 'hɔ', 'baako', 'akuntunu', 'ne', 'mu', 'ɛnam', 'ɛhyehyɛ', 'kyɛ', 'a', '<UNK>']...
+
+3. Length: 25 tokens
+   Tokens: ['<s>', 'Baabi', 'a', 'yɛbu', 'fangoo', 'na', 'ɛhɔ', 'ahye', 'ama', 'nwisie', 'ɛfiri', 'baabi', 'reba', 'ɛhyɛn', 'a']...
+
+================================================================================
+N-GRAM EXTRACTION DEMONSTRATION
+================================================================================
+
+Sample sentence: ['<s>', 'Adwumayɛfoɔ', 'nsia', 'adwumayɛfoɔ', 'nson', 'a', 'wɔreyɛ', 'adwuma', 'wɔrebɔ', 'ɛdan', 'so', '</s>']...
+
+1-grams extracted: 12
+  First 5 1-grams: [('<s>',), ('Adwumayɛfoɔ',), ('nsia',), ('adwumayɛfoɔ',), ('nson',)]
+
+2-grams extracted: 11
+  First 5 2-grams: [('<s>', 'Adwumayɛfoɔ'), ('Adwumayɛfoɔ', 'nsia'), ('nsia', 'adwumayɛfoɔ'), ('adwumayɛfoɔ', 'nson'), ('nson', 'a')]
+
+3-grams extracted: 11
+  First 5 3-grams: [('<s>', '<s>', 'Adwumayɛfoɔ'), ('<s>', 'Adwumayɛfoɔ', 'nsia'), ('Adwumayɛfoɔ', 'nsia', 'adwumayɛfoɔ'), ('nsia', 'adwumayɛfoɔ', 'nson'), ('adwumayɛfoɔ', 'nson', 'a')]
+
+================================================================================
+PREPROCESSING TEST COMPLETE
+================================================================================
